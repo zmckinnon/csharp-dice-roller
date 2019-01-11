@@ -1,4 +1,4 @@
-namespace DiceRoller
+namespace DiceTower
 {
     public class Roller
     {

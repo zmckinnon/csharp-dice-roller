@@ -1,4 +1,4 @@
-# C# Dice Roller
+# DiceTower
 
 This project is a dice roller that gives you the sum of random dice rolls given the number of dice and the number of sides for those dice.
 
@@ -37,3 +37,9 @@ To build the project run `dotnet build`
 ## Test
 
 To run unit tests on the project run `dotnet test`
+
+## Package & Push
+
+To package the project run `dotnet pack`
+
+Then, to push it to nuget run `dotnet nuget push ./bin/Debug/DiceTower.*.nupkg -k [ApiKey] -s https://api.nuget.org/v3/index.json`

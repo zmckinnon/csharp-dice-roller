@@ -1,7 +1,7 @@
 using Xunit;
-using DiceRoller;
+using DiceTower;
 
-namespace DiceRoller.Tests
+namespace DiceTower.Tests
 {
     public class RollerTests
     {
