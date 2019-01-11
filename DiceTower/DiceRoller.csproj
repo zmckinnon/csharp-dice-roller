@@ -2,13 +2,14 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <PackageId>DiceTower</PackageId>
-        <Version>1.0.0-alpha2</Version>
+        <Version>1.0.0-alpha3</Version>
         <Authors>Zachary McKinnon</Authors>
         <Company>Curse</Company>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/zmckinnon/csharp-dice-roller</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/zmckinnon/dice-tower</PackageProjectUrl>
 		<!--<PackageIconUrl></PackageIconUrl>-->
-        <RepositoryUrl>https://github.com/zmckinnon/csharp-dice-roller</RepositoryUrl>
+        <RepositoryType>Github</RepositoryType>
+        <RepositoryUrl>https://github.com/zmckinnon/dice-tower</RepositoryUrl>
         <PackageTags>dice rpg dnd</PackageTags>
         <NeutralLanguage>en-US</NeutralLanguage>
     </PropertyGroup>
