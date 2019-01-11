@@ -17,5 +17,33 @@ namespace DiceRoller.Tests
             // Assert
             Assert.True(result >= 1 && result <= 4);
         }
+
+        [Fact]
+        public void Roll_WhenDieHasAdvantage_ShouldReturnBetween1And20()
+        {
+            // Arrange
+            var die = new Die(20);
+            die.HasAdvantage = true;
+
+            // Act
+            var result = die.Roll();
+
+            // Assert
+            Assert.True(result >= 1 && result <= 20);
+        }
+
+        [Fact]
+        public void Roll_WhenDieHasDisadvantage_ShouldReturnBetween1And20()
+        {
+            // Arrange
+            var die = new Die(20);
+            die.HasDisadvantage = true;
+
+            // Act
+            var result = die.Roll();
+
+            // Assert
+            Assert.True(result >= 1 && result <= 20);
+        }
     }
 }

@@ -16,6 +16,20 @@ var roller = new Roller(4, 20);
 var result = roller.Roll();
 ```
 
+To roll a single D20 with advantage:
+```
+var die = new Die(20);
+die.HasAdvantage = true;
+var result = die.Roll();
+```
+
+To roll a single D20 with disadvantage:
+```
+var die = new Die(20);
+die.HasDisadvantage = true;
+var result = die.Roll();
+```
+
 ## Build
 
 To build the project run `dotnet build`
