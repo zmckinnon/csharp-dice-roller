@@ -23,10 +23,9 @@ namespace DiceTower.Tests
         {
             // Arrange
             var die = new Die(20);
-            die.HasAdvantage = true;
 
             // Act
-            var result = die.Roll();
+            var result = die.WithAdvantage().Roll();
 
             // Assert
             Assert.True(result >= 1 && result <= 20);
@@ -37,10 +36,9 @@ namespace DiceTower.Tests
         {
             // Arrange
             var die = new Die(20);
-            die.HasDisadvantage = true;
 
             // Act
-            var result = die.Roll();
+            var result = die.WithDisadvantage().Roll();
 
             // Assert
             Assert.True(result >= 1 && result <= 20);
