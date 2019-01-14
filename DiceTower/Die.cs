@@ -1,17 +1,21 @@
 using System;
+using System.Security.Cryptography;
+using DiceTower.RNG;
 
 namespace DiceTower
 {
     public class Die
     {
-        public Die(int numberOfSides)
+        public Die(int numberOfSides, IRandomNumberGenerator rng = null)
         {
             this.NumberOfSides = numberOfSides;
+            this.RandomNumberGenerator = rng ?? new CSRandomNumberGenerator();
         }
 
         public bool HasAdvantage { get; set; }
         public bool HasDisadvantage { get; set; }
         private int NumberOfSides { get; }
+        private IRandomNumberGenerator RandomNumberGenerator { get; }
 
         public int Roll()
         {
@@ -21,17 +25,17 @@ namespace DiceTower
             }
             if (this.HasAdvantage)
             {
-                var firstResult = new Random().Next(1, this.NumberOfSides);
-                var secondResult = new Random().Next(1, this.NumberOfSides);
+                var firstResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
+                var secondResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
                 return Math.Max(firstResult, secondResult);
             }
             if (this.HasDisadvantage)
             {
-                var firstResult = new Random().Next(1, this.NumberOfSides);
-                var secondResult = new Random().Next(1, this.NumberOfSides);
+                var firstResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
+                var secondResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
                 return Math.Min(firstResult, secondResult);
             }
-            return new Random().Next(1, this.NumberOfSides);
+            return this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
         }
     }
 }
