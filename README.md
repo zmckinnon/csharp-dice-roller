@@ -19,15 +19,13 @@ var result = roller.Roll();
 To roll a single D20 with advantage:
 ```
 var die = new Die(20);
-die.HasAdvantage = true;
-var result = die.Roll();
+var result = die.WithAdvantage().Roll();
 ```
 
 To roll a single D20 with disadvantage:
 ```
 var die = new Die(20);
-die.HasDisadvantage = true;
-var result = die.Roll();
+var result = die.WithDisadvantage().Roll();
 ```
 
 ## Build
