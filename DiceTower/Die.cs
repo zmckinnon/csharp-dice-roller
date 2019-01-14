@@ -12,8 +12,8 @@ namespace DiceTower
             this.RandomNumberGenerator = rng ?? new CSRandomNumberGenerator();
         }
 
-        public bool HasAdvantage { get; set; }
-        public bool HasDisadvantage { get; set; }
+        private bool HasAdvantage { get; set; }
+        private bool HasDisadvantage { get; set; }
         private int NumberOfSides { get; }
         private IRandomNumberGenerator RandomNumberGenerator { get; }
 
@@ -36,6 +36,20 @@ namespace DiceTower
                 return Math.Min(firstResult, secondResult);
             }
             return this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
+        }
+
+        public Die WithAdvantage()
+        {
+            this.HasAdvantage = true;
+            this.HasDisadvantage = false;
+            return this;
+        }
+
+        public Die WithDisadvantage()
+        {
+            this.HasDisadvantage = true;
+            this.HasAdvantage = false;
+            return this;
         }
     }
 }
