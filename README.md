@@ -1,4 +1,4 @@
-# DiceTower
+# DiceTower [![Build Status](https://travis-ci.com/zmckinnon/dice-tower.svg?branch=master)](https://travis-ci.com/zmckinnon/dice-tower)
 
 This project is a dice roller that gives you the sum of random dice rolls given the number of dice and the number of sides for those dice.
 
