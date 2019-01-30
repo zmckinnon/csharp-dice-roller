@@ -12,12 +12,15 @@ namespace DiceTower
             this.RandomNumberGenerator = rng ?? new CSRandomNumberGenerator();
         }
 
+        public int Value { get; private set; }
+        public bool IsCriticalSuccess => this.Value == this.NumberOfSides;
+        public bool IsCriticalFailure => this.Value == 1;
         private bool HasAdvantage { get; set; }
         private bool HasDisadvantage { get; set; }
         private int NumberOfSides { get; }
         private IRandomNumberGenerator RandomNumberGenerator { get; }
 
-        public int Roll()
+        public void Roll()
         {
             if (this.HasAdvantage && this.HasDisadvantage)
             {
@@ -27,15 +30,17 @@ namespace DiceTower
             {
                 var firstResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
                 var secondResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
-                return Math.Max(firstResult, secondResult);
+                this.Value = Math.Max(firstResult, secondResult);
             }
-            if (this.HasDisadvantage)
+            else if (this.HasDisadvantage)
             {
                 var firstResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
                 var secondResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
-                return Math.Min(firstResult, secondResult);
+                this.Value = Math.Min(firstResult, secondResult);
             }
-            return this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
+            else {
+                this.Value = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
+            }
         }
 
         public Die WithAdvantage()

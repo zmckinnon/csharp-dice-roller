@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace DiceTower
 {
     public class Roller
@@ -11,15 +13,16 @@ namespace DiceTower
         private int NumberOfDice { get; }
         private int NumberOfSides { get; }
 
-        public int Roll()
+        public RollResult Roll()
         {
-            var retVal = 0;
+            var dice = new List<Die>();
             for (var i = 0; i < this.NumberOfDice; i++)
             {
                 var die = new Die(this.NumberOfSides);
-                retVal += die.Roll();
+                die.Roll();
+                dice.Add(die);
             }
-            return retVal;
+            return new RollResult(dice);
         }
     }
 }

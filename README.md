@@ -7,25 +7,29 @@ This project is a dice roller that gives you the sum of random dice rolls given 
 To roll a single D4:
 ```
 var die = new Die(4);
-var result = die.Roll();
+die.Roll();
+Console.WriteLine($"You rolled a {die.Value}");
 ```
 
 To roll 4 D20s:
 ```
 var roller = new Roller(4, 20);
-var result = roller.Roll();
+var rollResult = roller.Roll();
+Console.WriteLine($"You rolled a total of {rollResult.TotalValue}");
 ```
 
 To roll a single D20 with advantage:
 ```
 var die = new Die(20);
-var result = die.WithAdvantage().Roll();
+die.WithAdvantage().Roll();
+Console.WriteLine($"You rolled a {die.Value}");
 ```
 
 To roll a single D20 with disadvantage:
 ```
 var die = new Die(20);
-var result = die.WithDisadvantage().Roll();
+die.WithDisadvantage().Roll();
+Console.WriteLine($"You rolled a {die.Value}");
 ```
 
 ## Build

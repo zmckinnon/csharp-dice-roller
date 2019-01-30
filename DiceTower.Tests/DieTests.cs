@@ -12,10 +12,10 @@ namespace DiceTower.Tests
             var die = new Die(4);
 
             // Act
-            var result = die.Roll();
+            die.Roll();
 
             // Assert
-            Assert.True(result >= 1 && result <= 4);
+            Assert.True(die.Value >= 1 && die.Value <= 4);
         }
 
         [Fact]
@@ -25,10 +25,10 @@ namespace DiceTower.Tests
             var die = new Die(20);
 
             // Act
-            var result = die.WithAdvantage().Roll();
+            die.WithAdvantage().Roll();
 
             // Assert
-            Assert.True(result >= 1 && result <= 20);
+            Assert.True(die.Value >= 1 && die.Value <= 20);
         }
 
         [Fact]
@@ -38,10 +38,10 @@ namespace DiceTower.Tests
             var die = new Die(20);
 
             // Act
-            var result = die.WithDisadvantage().Roll();
+            die.WithDisadvantage().Roll();
 
             // Assert
-            Assert.True(result >= 1 && result <= 20);
+            Assert.True(die.Value >= 1 && die.Value <= 20);
         }
     }
 }

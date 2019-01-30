@@ -15,7 +15,8 @@ namespace DiceTower.Tests
             var result = roller.Roll();
 
             // Assert
-            Assert.True(result >= 3 && result <= 60);
+            Assert.True(result.TotalValue >= 3 && result.TotalValue <= 60);
+            Assert.Equal(4, result.NumberOfDice);
         }
     }
 }
