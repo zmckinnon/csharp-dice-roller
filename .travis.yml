@@ -10,4 +10,4 @@ before_script:
 script:
   - dotnet build ./DiceTower
   - dotnet test ./DiceTower.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../TestResults/ /p:Exclude=[xunit.*]*
-  - csmacnz.Coveralls --opencover -i ./TestResults/coverage.opencover.xml --useRelativePaths
+  - csmacnz.Coveralls --opencover -i ./TestResults/coverage.opencover.xml --repoToken $COVERALLS_REPO_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID  --serviceName "travis-ci" --useRelativePaths
