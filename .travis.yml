@@ -1,12 +1,10 @@
-dist: bionic
 language: csharp
 mono: none
 dotnet: 2.2.101
-
+dist: bionic
+sudo: false
 before_script:
  - cd ./DiceTower.Tests
-
 script:
- - dotnet restore
  - dotnet build
  - dotnet test
