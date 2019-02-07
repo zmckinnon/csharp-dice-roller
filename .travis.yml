@@ -3,9 +3,11 @@ mono: none
 dotnet: 2.2.101
 dist: bionic
 sudo: false
+install:
+  - dotnet tool install -global coveralls.net
 before_script:
- - dotnet tool install -g coveralls.net
+  - export PATH="$PATH:$HOME/.dotnet/tools"
 script:
- - dotnet build ./DiceTower
- - dotnet test ./DiceTower.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
- - csmacnz.Coveralls --opencover -i ./DiceTower.Tests/coverage.opencover.xml --useRelativePaths
+  - dotnet build ./DiceTower
+  - dotnet test ./DiceTower.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+  - csmacnz.Coveralls --opencover -i ./DiceTower.Tests/coverage.opencover.xml --useRelativePaths
