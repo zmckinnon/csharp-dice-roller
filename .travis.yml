@@ -9,5 +9,5 @@ before_script:
   - export PATH="$PATH:$HOME/.dotnet/tools"
 script:
   - dotnet build ./DiceTower
-  - dotnet test ./DiceTower.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../TestResults/
+  - dotnet test ./DiceTower.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../TestResults/ /p:Exclude=[xunit.*]*
   - csmacnz.Coveralls --opencover -i ./TestResults/coverage.opencover.xml --repoToken OyzvtWyAMa3yTIAONd4nunGAu1j4hq195 --useRelativePaths
