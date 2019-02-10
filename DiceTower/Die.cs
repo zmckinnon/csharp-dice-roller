@@ -4,7 +4,14 @@ using DiceTower.RNG;
 
 namespace DiceTower
 {
-    public class Die
+    public interface IDie
+    {
+        int Value { get; }
+        bool IsCriticalSuccess { get; }
+        bool IsCriticalFailure { get; }
+    }
+
+    public class Die : IDie
     {
         public Die(int numberOfSides, IRandomNumberGenerator rng = null)
         {

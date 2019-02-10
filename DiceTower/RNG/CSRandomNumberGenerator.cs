@@ -3,6 +3,11 @@ using System.Security.Cryptography;
 
 namespace DiceTower.RNG
 {
+    public interface IRandomNumberGenerator 
+    {
+        int GenerateRandomInt(int min, int max);
+    }
+
     /// <summary>
     /// Cryptographically-Secure Random Number Generator
     /// </summary>

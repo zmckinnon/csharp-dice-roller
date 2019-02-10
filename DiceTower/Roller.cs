@@ -15,7 +15,7 @@ namespace DiceTower
 
         public RollResult Roll()
         {
-            var dice = new List<Die>();
+            var dice = new List<IDie>();
             for (var i = 0; i < this.NumberOfDice; i++)
             {
                 var die = new Die(this.NumberOfSides);
