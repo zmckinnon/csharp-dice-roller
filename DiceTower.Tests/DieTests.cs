@@ -1,47 +1,59 @@
 using Xunit;
 using DiceTower;
+using Moq;
+using DiceTower.RNG;
 
 namespace DiceTower.Tests
 {
     public class DieTests
     {
         [Fact]
-        public void Roll_WhenD4_ShouldReturnBetween1And4()
+        public void Roll_WhenD4_ShouldReturnThree()
         {
             // Arrange
-            var die = new Die(4);
+            var randomNumberGeneratorMock = new Mock<IRandomNumberGenerator>();
+            randomNumberGeneratorMock.Setup(x => x.GenerateRandomInt(1, 4)).Returns(3);
+            var die = new Die(4, randomNumberGeneratorMock.Object);
 
             // Act
             die.Roll();
 
             // Assert
-            Assert.True(die.Value >= 1 && die.Value <= 4);
+            Assert.Equal(3, die.Value);
         }
 
         [Fact]
-        public void Roll_WhenDieHasAdvantage_ShouldReturnBetween1And20()
+        public void Roll_WhenDieHasAdvantage_ShouldReturnTen()
         {
             // Arrange
-            var die = new Die(20);
+            var randomNumberGeneratorMock = new Mock<IRandomNumberGenerator>();
+            randomNumberGeneratorMock.SetupSequence(x => x.GenerateRandomInt(1, 20))
+                .Returns(10)
+                .Returns(6);
+            var die = new Die(20, randomNumberGeneratorMock.Object);
 
             // Act
             die.WithAdvantage().Roll();
 
             // Assert
-            Assert.True(die.Value >= 1 && die.Value <= 20);
+            Assert.Equal(10, die.Value);
         }
 
         [Fact]
-        public void Roll_WhenDieHasDisadvantage_ShouldReturnBetween1And20()
+        public void Roll_WhenDieHasDisadvantage_ShouldReturnSix()
         {
             // Arrange
-            var die = new Die(20);
+            var randomNumberGeneratorMock = new Mock<IRandomNumberGenerator>();
+            randomNumberGeneratorMock.SetupSequence(x => x.GenerateRandomInt(1, 20))
+                .Returns(10)
+                .Returns(6);
+            var die = new Die(20, randomNumberGeneratorMock.Object);
 
             // Act
             die.WithDisadvantage().Roll();
 
             // Assert
-            Assert.True(die.Value >= 1 && die.Value <= 20);
+            Assert.Equal(6, die.Value);
         }
     }
 }
