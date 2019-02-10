@@ -29,10 +29,6 @@ namespace DiceTower
 
         public void Roll()
         {
-            if (this.HasAdvantage && this.HasDisadvantage)
-            {
-                throw new Exception("A die can't have advantage and disadvantage at the same time.");
-            }
             if (this.HasAdvantage)
             {
                 var firstResult = this.RandomNumberGenerator.GenerateRandomInt(1, this.NumberOfSides);
