@@ -55,5 +55,35 @@ namespace DiceTower.Tests
             // Assert
             Assert.Equal(6, die.Value);
         }
+
+        [Fact]
+        public void IsCriticalSuccess_ShouldReturnTrue()
+        {
+            // Arrange
+            var randomNumberGeneratorMock = new Mock<IRandomNumberGenerator>();
+            randomNumberGeneratorMock.Setup(x => x.GenerateRandomInt(1, 20)).Returns(20);
+            var die = new Die(20, randomNumberGeneratorMock.Object);
+
+            // Act
+            die.Roll();
+
+            // Assert
+            Assert.True(die.IsCriticalSuccess);
+        }
+
+        [Fact]
+        public void IsCriticalFailure_ShouldReturnTrue()
+        {
+            // Arrange
+            var randomNumberGeneratorMock = new Mock<IRandomNumberGenerator>();
+            randomNumberGeneratorMock.Setup(x => x.GenerateRandomInt(1, 20)).Returns(1);
+            var die = new Die(20, randomNumberGeneratorMock.Object);
+
+            // Act
+            die.Roll();
+
+            // Assert
+            Assert.True(die.IsCriticalFailure);
+        }
     }
 }
