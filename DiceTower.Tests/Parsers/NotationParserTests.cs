@@ -48,6 +48,17 @@ namespace DiceTower.Tests.Parsers
         }
 
         [Fact]
+        public void Parse_WhenInvalidBecauseInvalidNumberOfDice_ShouldThrowException()
+        {
+            // Arrange
+            var notationParser = new NotationParser("ad4");
+
+            // Act/Assert
+            var exception = Assert.Throws<Exception>(() => notationParser.Parse());
+            Assert.Equal("Invalid notation.", exception.Message);
+        }
+
+        [Fact]
         public void Parse_WhenInvalidBecauseInvalidNumberOfSides_ShouldThrowException()
         {
             // Arrange
