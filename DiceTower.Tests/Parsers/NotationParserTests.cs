@@ -48,10 +48,10 @@ namespace DiceTower.Tests.Parsers
         }
 
         [Fact]
-        public void Parse_WhenInvalidBecauseNoNumberOfSides_ShouldThrowException()
+        public void Parse_WhenInvalidBecauseInvalidNumberOfSides_ShouldThrowException()
         {
             // Arrange
-            var notationParser = new NotationParser("2d");
+            var notationParser = new NotationParser("2das");
 
             // Act/Assert
             var exception = Assert.Throws<Exception>(() => notationParser.Parse());
