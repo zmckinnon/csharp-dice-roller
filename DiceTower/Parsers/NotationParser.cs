@@ -13,7 +13,7 @@ namespace DiceTower.Parsers
 
         public NotationParserResult Parse()
         {
-            if (!this.Notation.Contains('d') && !this.Notation.Contains('D'))
+            if (!this.Notation.Contains('d'))
             {
                 throw new Exception("Invalid notation.");
             }

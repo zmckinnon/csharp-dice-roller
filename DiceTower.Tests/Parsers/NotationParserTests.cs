@@ -1,3 +1,4 @@
+using System;
 using DiceTower.Parsers;
 using Xunit;
 
@@ -33,6 +34,39 @@ namespace DiceTower.Tests.Parsers
             Assert.Equal(2, result.NumberOfDice);
             Assert.Equal(20, result.NumberOfSides);
             Assert.Equal(0, result.Modifier);
+        }
+
+        [Fact]
+        public void Parse_WhenInvalidBecauseNoD_ShouldThrowException()
+        {
+            // Arrange
+            var notationParser = new NotationParser("2f20");
+
+            // Act/Assert
+            var exception = Assert.Throws<Exception>(() => notationParser.Parse());
+            Assert.Equal("Invalid notation.", exception.Message);
+        }
+
+        [Fact]
+        public void Parse_WhenInvalidBecauseNoNumberOfSides_ShouldThrowException()
+        {
+            // Arrange
+            var notationParser = new NotationParser("2d");
+
+            // Act/Assert
+            var exception = Assert.Throws<Exception>(() => notationParser.Parse());
+            Assert.Equal("Invalid notation.", exception.Message);
+        }
+
+        [Fact]
+        public void Parse_WhenInvalidBecauseInvalidModifier_ShouldThrowException()
+        {
+            // Arrange
+            var notationParser = new NotationParser("2d6+f");
+
+            // Act/Assert
+            var exception = Assert.Throws<Exception>(() => notationParser.Parse());
+            Assert.Equal("Invalid notation.", exception.Message);
         }
     }
 }
