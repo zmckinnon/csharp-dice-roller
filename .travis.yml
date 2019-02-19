@@ -20,4 +20,4 @@ deploy:
   skip-cleanup: true
   script: dotnet nuget push ./DiceTower/bin/Release/DiceTower.*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
   on:
-    branch: nuget-deploy
+    branch: master
