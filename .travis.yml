@@ -10,7 +10,14 @@ before_script:
 script:
   - dotnet build ./DiceTower
   - dotnet test ./DiceTower.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../TestResults/ /p:Exclude=[xunit.*]*
+  - dotnet pack
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
   - REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
   - csmacnz.Coveralls --opencover -i ./TestResults/coverage.opencover.xml --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: dotnet nuget push ./bin/Release/DiceTower.*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
+  on:
+    branch: nuget-deploy
