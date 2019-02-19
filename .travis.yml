@@ -17,7 +17,7 @@ script:
 #  - csmacnz.Coveralls --opencover -i ./TestResults/coverage.opencover.xml --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID --serviceName "travis-ci" --useRelativePaths
 deploy:
   provider: script
-  skip_cleanup: true
+  skip-cleanup: true
   script: dotnet nuget push ./bin/Release/DiceTower.*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
   on:
     branch: nuget-deploy
