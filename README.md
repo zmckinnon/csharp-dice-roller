@@ -18,6 +18,13 @@ var rollResult = roller.Roll();
 Console.WriteLine($"You rolled a total of {rollResult.TotalValue}");
 ```
 
+To roll 4 D20s with +5 modifier using dice notation:
+```
+var roller = new Roller("4d20+5");
+var rollResult = roller.Roll();
+Console.WriteLine($"You rolled a total of {rollResult.TotalValue}");
+```
+
 To roll a single D20 with advantage:
 ```
 var die = new Die(20);
