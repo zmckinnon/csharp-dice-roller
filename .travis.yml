@@ -10,7 +10,7 @@ before_script:
 script:
   - dotnet build ./DiceTower
   - dotnet test ./DiceTower.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../TestResults/ /p:Exclude=[xunit.*]*
-  - dotnet pack ./DiceTower
+  - dotnet pack ./DiceTower -c Release
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
   - REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
